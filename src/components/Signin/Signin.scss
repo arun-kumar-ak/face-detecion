@@ -1,0 +1,37 @@
+.grid-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .mt {
+        margin-bottom: 20px;
+    }
+}
+
+// media queries for responsive
+@media all and (min-width: 1024px) {
+    .input-field {
+        width: 25em;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+    .input-field {
+        width: 20em;
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 768px) { 
+    .input-field {
+        width: 15em;
+    }
+    .grid-parent {
+       .input-field {
+           &:first-child {
+               width: 15em+0.2em;
+           }
+       }
+    }
+}
