@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 
-import './App.css';
 // import { getData } from './redux/actions';
 
 const mapStateToProps = (state) => {
