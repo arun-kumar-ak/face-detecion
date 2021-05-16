@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
+import Home from './components/Home/Home';
 
 // import { getData } from './redux/actions';
 
@@ -17,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     // sample: () => dispatch(getData())
   }    
 }
-
 class App extends Component {
   // componentDidMount() {
   //   this.props.sample()
@@ -28,6 +28,7 @@ class App extends Component {
         <Switch>
           <Route path="/" component={Signin} exact />
           <Route path="/register" component={Register} />
+          <Route path="/home" component={Home} />
         </Switch>
       </Router>
     {/* <Button variant="contained" color="secondary">

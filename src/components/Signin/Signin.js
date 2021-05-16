@@ -33,7 +33,7 @@ const Signin = () =>{
                     }
                 />
             </FormControl>
-            <Button variant="contained" size="large" color="secondary" className="mt">SignIn</Button>
+            <Link to="/home" ><Button variant="contained" size="large" color="secondary" className="mt">SignIn</Button></Link>
             <p>If you are new to Here <Link to="/register">Register</Link></p>
         </form>
     );

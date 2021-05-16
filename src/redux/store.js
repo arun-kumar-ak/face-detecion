@@ -1,7 +1,12 @@
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 
-import { getDataReducer } from './reducers';
+import { getDataReducer, formHandlerReducer } from './reducers';
 
-export const store = createStore(getDataReducer,applyMiddleware(logger,thunk));
+const rootReducer = combineReducers({
+        getData: getDataReducer, 
+        formData: formHandlerReducer
+    })
+
+export const store = createStore(rootReducer,applyMiddleware(thunk,logger));
