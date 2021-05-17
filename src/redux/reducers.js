@@ -4,7 +4,9 @@ import {    REQUEST_PENDING,
             IS_EMAIL,
             IS_PASSWORD,
             IS_EMAIL_VALID,
-            IS_SHOW_PASSWORD
+            IS_SHOW_PASSWORD,
+            IS_PASSWORD_VALID,
+            IS_NAME
         } from './constants';
 
 const initialData={
@@ -37,14 +39,23 @@ export const getDataReducer = (state=initialData, action) => {
 const initialFormData = {
     email: '',
     password: '',
+    username: '',
     validation: {
         isEmailValid: false,
+        emailErrorMsg: '',
+        isPasswordValid: false,
+        passwordErrorMsg: '',
         showPassword: false
     }
 }
 
 export const formHandlerReducer = (state=initialFormData, action) => {
     switch (action.type) {
+        case IS_NAME:
+            return {
+                ...state,
+                username: action.payload
+            }
         case IS_EMAIL:
             return {
                 ...state,
@@ -59,7 +70,16 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 validation: {
-                    isEmailValid: action.payload
+                    isEmailValid: action.payload[0],
+                    emailErrorMsg: action.payload[1]
+                }
+            }
+        case IS_PASSWORD_VALID:
+            return {
+                ...state,
+                validation: {
+                    isPasswordValid: action.payload[0],
+                    passwordErrorMsg: action.payload[1]
                 }
             }
         case IS_SHOW_PASSWORD:
