@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment,FormHelperText } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import '../Signin/Signin.scss';
@@ -49,7 +49,10 @@ const Register = () => {
 
     const passwordValidate = () => {
         password_len_cnt = password_len_cnt + 1;
-        // console.log('password validate')
+        if(formData.password.length === 0) {
+            dispatch(formHandler([true,'*required'], IS_PASSWORD_VALID))
+            return
+        }
         if(formData.password.length < 8) {
             dispatch(formHandler([true,'password must greater than 8 characters'], IS_PASSWORD_VALID))
         }
@@ -76,7 +79,7 @@ const Register = () => {
                 onChange={onFormHandler}
                 onBlur = {emailValidate}
             />
-            <FormControl className="input-field mt">
+            <FormControl className="input-field mt" error={formData.validation.isPasswordValid}>
                 <InputLabel htmlFor="standard-adornment-password" >Password</InputLabel>
                 <Input
                     id="standard-adornment-password"
@@ -85,8 +88,6 @@ const Register = () => {
                     name="password"
                     onChange={onFormHandler}
                     onBlur={passwordValidate}
-                    error={formData.validation.isPasswordValid}
-                    // helperText={formData.validation.isPasswordValid? formData.validation.passwordErrorMsg: ""}
                     endAdornment={
                         <InputAdornment position="end">
                         <IconButton
@@ -98,6 +99,7 @@ const Register = () => {
                         </InputAdornment>
                     }
                 />
+                <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
             </FormControl>
             <Button variant="contained" size="large" color="secondary" className="mt">Register</Button>
             <p>Already have an account <Link to="/">SignIn</Link></p>

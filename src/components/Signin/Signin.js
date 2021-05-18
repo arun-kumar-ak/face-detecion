@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import './Signin.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { formHandler } from '../../redux/actions';
-import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD } from '../../redux/constants';
+import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID } from '../../redux/constants';
 
 var email_len_cnt=0;
+var password_len_cnt = 0;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const Signin = () =>{
@@ -27,6 +28,10 @@ const Signin = () =>{
             }
         }else {
             dispatch(formHandler(e.target.value, IS_PASSWORD))
+            if(password_len_cnt > 0) {
+                dispatch(formHandler([false,''], IS_PASSWORD_VALID))
+                password_len_cnt=0;
+            }
         }
     }
 
@@ -38,6 +43,17 @@ const Signin = () =>{
         }
         if(!emailPattern.test(formData.email)) {
             dispatch(formHandler([true,'enter valid email id'], IS_EMAIL_VALID))   
+        }
+    }
+
+    const passwordValidate = () => {
+        password_len_cnt = password_len_cnt + 1;
+        if(formData.password.length === 0) {
+            dispatch(formHandler([true,'*required'], IS_PASSWORD_VALID))
+            return
+        }
+        if(formData.password.length < 8) {
+            dispatch(formHandler([true,'password must greater than 8 characters'], IS_PASSWORD_VALID))
         }
     }
 
@@ -54,7 +70,7 @@ const Signin = () =>{
                 onChange={onFormHandler}
                 onBlur = {emailValidate}
             />
-            <FormControl className="input-field mt">
+            <FormControl className="input-field mt" error={formData.validation.isPasswordValid}>
                 <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                 <Input
                     id="standard-adornment-password"
@@ -62,6 +78,7 @@ const Signin = () =>{
                     className=""
                     name="password"
                     onChange={onFormHandler}
+                    onBlur={passwordValidate}
                     endAdornment={
                         <InputAdornment position="end">
                         <IconButton
@@ -73,6 +90,7 @@ const Signin = () =>{
                         </InputAdornment>
                     }
                 />
+                <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
             </FormControl>
             <Button variant="contained" size="large" color="secondary" className="mt">SignIn</Button>
             <p>If you are new to Here <Link to="/register">Register</Link></p>

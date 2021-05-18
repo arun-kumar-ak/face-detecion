@@ -70,6 +70,7 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 validation: {
+                    ...state.validation,
                     isEmailValid: action.payload[0],
                     emailErrorMsg: action.payload[1]
                 }
@@ -78,6 +79,7 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 validation: {
+                    ...state.validation,
                     isPasswordValid: action.payload[0],
                     passwordErrorMsg: action.payload[1]
                 }
@@ -86,6 +88,7 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 validation: {
+                    ...state.validation,
                     showPassword: action.payload
                 }
             }
