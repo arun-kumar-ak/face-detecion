@@ -7,8 +7,8 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import './Signin.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { formHandler } from '../../redux/actions';
-import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID } from '../../redux/constants';
+import { formHandler, formSubmit } from '../../redux/actions';
+import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID, RESET } from '../../redux/constants';
 
 var email_len_cnt=0;
 var password_len_cnt = 0;
@@ -57,6 +57,14 @@ const Signin = () =>{
         }
     }
 
+    const onFormSubmit = () => {
+        let bodyData = {
+            email: formData.email,
+            password: formData.password
+        }
+        dispatch(formSubmit(bodyData,'signin'))
+    }
+
     return (
         <form className="grid-parent" noValidate autoComplete="off">
             <TextField
@@ -92,8 +100,8 @@ const Signin = () =>{
                 />
                 <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
             </FormControl>
-            <Button variant="contained" size="large" color="secondary" className="mt">SignIn</Button>
-            <p>If you are new to Here <Link to="/register">Register</Link></p>
+            <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
+            <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
         </form>
     );
 }

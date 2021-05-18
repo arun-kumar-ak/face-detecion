@@ -6,7 +6,8 @@ import {    REQUEST_PENDING,
             IS_EMAIL_VALID,
             IS_SHOW_PASSWORD,
             IS_PASSWORD_VALID,
-            IS_NAME
+            IS_NAME,
+            RESET
         } from './constants';
 
 const initialData={
@@ -14,7 +15,7 @@ const initialData={
     isPending: true
 }
 
-export const getDataReducer = (state=initialData, action) => {
+export const formSubmitReducer = (state=initialData, action) => {
     switch (action.type) {
         case REQUEST_PENDING:
             return {
@@ -92,6 +93,8 @@ export const formHandlerReducer = (state=initialFormData, action) => {
                     showPassword: action.payload
                 }
             }
+        case RESET:
+            return state = initialFormData
         default:
             return state
     }
