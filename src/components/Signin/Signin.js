@@ -1,21 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import Alert from '@material-ui/lab/Alert';
+import LockIcon from '@material-ui/icons/Lock';
+import CloseIcon from '@material-ui/icons/Close';
+import GoogleButton from 'react-google-button';
 
 import './Signin.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { formHandler, formSubmit } from '../../redux/actions';
-import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID, RESET } from '../../redux/constants';
+import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID, IS_ALERT_OPEN, RESET } from '../../redux/constants';
 
 var email_len_cnt=0;
 var password_len_cnt = 0;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const Signin = () =>{
-    const formData = useSelector(state => state.formData);
+    const state = useSelector(state => state)
+    const formData = state.formData;
+    const responseData = state.responseData;
     const dispatch = useDispatch();
 
     const onFormHandler = (e) => {
@@ -65,16 +71,39 @@ const Signin = () =>{
         dispatch(formSubmit(bodyData,'signin'))
     }
 
+    if(!responseData.isPending && responseData.data.successMsg === 'login successfully') {
+        return <Redirect to='/home' />
+    }
+    
     return (
         <form className="grid-parent" noValidate autoComplete="off">
+            <LockIcon color="secondary" style={{ fontSize: 60 }} className="mt" />
+            <Collapse in={formData.validation.isAlertOpen}>
+                <Alert
+                    severity="error"
+                    action={
+                        <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => dispatch(formHandler([!formData.validation.isAlertOpen, false, ''], IS_ALERT_OPEN))}
+                        >
+                        <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                    }
+                >
+                {formData.validation.alertMsg}
+                </Alert>
+            </Collapse>
             <TextField
                 id='standard-basic'
                 label="Email"
                 type="email"
                 name="email"
+                // value={formData.username}
                 error={formData.validation.isEmailValid}
                 helperText={formData.validation.isEmailValid? formData.validation.emailErrorMsg:"     "}
-                className="input-field mt"
+                className="input-field"
                 onChange={onFormHandler}
                 onBlur = {emailValidate}
             />
@@ -85,6 +114,7 @@ const Signin = () =>{
                     type={formData.validation.showPassword? 'text' : 'password'}
                     className=""
                     name="password"
+                    // value={formData.email}
                     onChange={onFormHandler}
                     onBlur={passwordValidate}
                     endAdornment={
@@ -102,6 +132,11 @@ const Signin = () =>{
             </FormControl>
             <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
             <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
+            <p>or</p>
+            <GoogleButton
+                type="light"
+                onClick={() => { console.log('Google button clicked') }}
+            />
         </form>
     );
 }

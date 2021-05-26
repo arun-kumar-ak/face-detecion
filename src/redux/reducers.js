@@ -3,10 +3,12 @@ import {    REQUEST_PENDING,
             REQUEST_FAILED, 
             IS_EMAIL,
             IS_PASSWORD,
+            IS_CONFIRM_PASSWORD,
             IS_EMAIL_VALID,
             IS_SHOW_PASSWORD,
             IS_PASSWORD_VALID,
             IS_NAME,
+            IS_ALERT_OPEN,
             RESET
         } from './constants';
 
@@ -42,11 +44,15 @@ const initialFormData = {
     password: '',
     username: '',
     validation: {
+        isConfirmPassword: '',
         isEmailValid: false,
         emailErrorMsg: '',
         isPasswordValid: false,
         passwordErrorMsg: '',
-        showPassword: false
+        showPassword: false,
+        isAlertOpen: false,
+        alertMsg: '',
+        isAlertError: false
     }
 }
 
@@ -66,6 +72,14 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 password: action.payload
+            }
+        case IS_CONFIRM_PASSWORD:
+            return {
+                ...state,
+                validation: {
+                    ...state.validation,
+                    isConfirmPassword: action.payload
+                }
             }
         case IS_EMAIL_VALID:
             return {
@@ -91,6 +105,16 @@ export const formHandlerReducer = (state=initialFormData, action) => {
                 validation: {
                     ...state.validation,
                     showPassword: action.payload
+                }
+            }
+        case IS_ALERT_OPEN:
+            return {
+                ...state,
+                validation: {
+                    ...state.validation,
+                    isAlertOpen: action.payload[0],
+                    isAlertError: action.payload[1],
+                    alertMsg: action.payload[2]
                 }
             }
         case RESET:

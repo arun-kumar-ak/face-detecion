@@ -28,7 +28,7 @@ class App extends Component {
         <Switch>
           <Route path="/" component={Signin} exact />
           <Route path="/register" component={Register} />
-          <Route path="/home" component={Home} />
+          <Route path="/home" render={() => this.props.responseData.isPending? <Signin /> : <Home /> } />
         </Switch>
       </Router>
     {/* <Button variant="contained" color="secondary">
