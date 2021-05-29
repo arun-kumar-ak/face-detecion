@@ -9,16 +9,24 @@ import {    REQUEST_PENDING,
             IS_PASSWORD_VALID,
             IS_NAME,
             IS_ALERT_OPEN,
+            INITIAL_IS_PENDING,
             RESET
         } from './constants';
 
 const initialData={
     data:{},
-    isPending: true
+    isPending: true,
+    isAuth: false,
+    initialIsPending: true
 }
 
 export const formSubmitReducer = (state=initialData, action) => {
     switch (action.type) {
+        case INITIAL_IS_PENDING:
+            return {
+                ...state,
+                initialIsPending: false
+            }
         case REQUEST_PENDING:
             return {
                 ...state,
@@ -28,12 +36,14 @@ export const formSubmitReducer = (state=initialData, action) => {
             return {
                 ...state,
                 data: action.payload,
-                isPending: false
+                isPending: false,
+                isAuth: true
             }
         case REQUEST_FAILED:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                isPending: false
             }
         default:
             return state

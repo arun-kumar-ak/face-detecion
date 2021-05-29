@@ -12,5 +12,6 @@ export const IS_PASSWORD_VALID = 'IS_PASSWORD_VALID';
 export const IS_SHOW_PASSWORD = 'IS_SHOW_PASSWORD';
 export const IS_NAME = "IS_NAME";
 export const IS_ALERT_OPEN = "IS_ALERT_OPEN";
+export const INITIAL_IS_PENDING = "INITIAL_IS_PENDING";
 
 export const RESET = "RESET";

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Alert from '@material-ui/lab/Alert';
 import LockIcon from '@material-ui/icons/Lock';
@@ -72,12 +72,12 @@ const Signin = () =>{
     }
 
     if(!responseData.isPending && responseData.data.successMsg === 'login successfully') {
-        return <Redirect to='/home' />
+        return <Redirect to='/' />
     }
-    
+
     return (
         <form className="grid-parent" noValidate autoComplete="off">
-            <LockIcon color="secondary" style={{ fontSize: 60 }} className="mt" />
+            {!responseData.isPending ? <LockIcon color="secondary" style={{ fontSize: 60 }} className="mt" /> : <CircularProgress color="secondary" size={60} />}
             <Collapse in={formData.validation.isAlertOpen}>
                 <Alert
                     severity="error"
@@ -135,7 +135,6 @@ const Signin = () =>{
             <p>or</p>
             <GoogleButton
                 type="light"
-                onClick={() => { console.log('Google button clicked') }}
             />
         </form>
     );

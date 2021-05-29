@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import Button from '@material-ui/core/Button';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { authUser } from './redux/actions';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
-
-// import { getData } from './redux/actions';
 
 const mapStateToProps = (state) => {
   return state;
@@ -15,29 +15,34 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // sample: () => dispatch(getData())
+    authUser: dispatch(authUser())
   }    
 }
+
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.sample()
-  // }
-  render(){return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/" component={Signin} exact />
-          <Route path="/register" component={Register} />
-          <Route path="/home" render={() => this.props.responseData.isPending? <Signin /> : <Home /> } />
-        </Switch>
-      </Router>
-    {/* <Button variant="contained" color="secondary">
-      Hello World
-    </Button> */}
-      {/* {this.props.isPending ? <h1>Loading</h1> : this.props.data.map((data,i) => <h1 key={i}>{data.name}</h1>) } */}
-      {/* {console.log(this.props.data)} */}
-    </div>
-  )}
+  render(){
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/" exact render={() => {
+                while(this.props.responseData.initialIsPending === true) {
+                  return <Backdrop style={{backgroundColor:"transparent"}} open={this.props.responseData.isPending}>
+                            <CircularProgress color="secondary" size={70} />
+                          </Backdrop>
+                }
+                if(this.props.responseData.isAuth) {
+                  return <Home />
+                }
+                return <Signin />
+              }} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/register" component={Register} />
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

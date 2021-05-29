@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import PersonIcon from '@material-ui/icons/Person';
 import CloseIcon from '@material-ui/icons/Close';
@@ -94,12 +94,12 @@ const Register = () => {
     }
 
     if(!responseData.isPending && responseData.data.successMsg === 'register successfully') {
-        return <Redirect to='/home' />
+        return <Redirect to='/' />
     }
 
     return (
         <form className="grid-parent" noValidate autoComplete="off" >
-            <PersonIcon color="secondary" style={{ fontSize: 70 }} className="mt" />
+            {!responseData.isPending ? <PersonIcon color="secondary" style={{ fontSize: 70 }} className="mt" /> : <CircularProgress color="secondary" size={60} />}
             <Collapse in={formData.validation.isAlertOpen}>
                 <Alert
                     severity={formData.validation.isAlertError ? "error" : "warning"}
@@ -183,11 +183,10 @@ const Register = () => {
                 <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
             </FormControl>
             <Button variant="contained" size="large" color="secondary" className="mt" onClick={onFormSubmit}>Register</Button>
-            <p>Already have an account <Link to="/"><span onClick={() => dispatch(formHandler('',RESET))}>SignIn</span></Link></p>
+            <p>Already have an account <Link to="/signin"><span onClick={() => dispatch(formHandler('',RESET))}>SignIn</span></Link></p>
             <p>or</p>
             <GoogleButton
                 type="light"
-                onClick={() => { console.log('Google button clicked') }}
             />
         </form>
     );

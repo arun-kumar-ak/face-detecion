@@ -2,7 +2,8 @@ import {
         REQUEST_PENDING,
         REQUEST_SUCCESS,
         REQUEST_FAILED,
-        IS_ALERT_OPEN
+        IS_ALERT_OPEN,
+        INITIAL_IS_PENDING
         } from './constants';
 
 const apiCall = (url,bodyData) => fetch(url,{
@@ -13,7 +14,42 @@ const apiCall = (url,bodyData) => fetch(url,{
         // mode: 'cors',
         credentials: 'include',
         body: JSON.stringify(bodyData)
-    }).then(resp => resp.json())
+    }).then(resp => {
+        return resp.json()
+    })
+
+const auth = () => fetch('http://localhost:3002/authUser', {
+            method: 'get',
+            credentials: 'include'
+        }).then(resp => {
+            return resp.json()
+        })
+
+export const authUser = () => (dispatch)=> {
+    dispatch({type: REQUEST_PENDING})
+    auth()
+        .then(res => {
+            if(res.errorMsg) {
+                dispatch(formHandler([true,true,res.errorMsg], IS_ALERT_OPEN))
+                dispatch({type: REQUEST_FAILED, payload: ''})
+                dispatch({type: INITIAL_IS_PENDING})
+            }
+
+            if(res.passwordNeed) {
+                dispatch(formHandler([true,false,'Please set the password for future use'], IS_ALERT_OPEN))
+                dispatch({type: REQUEST_FAILED, payload: ''})
+                dispatch({type: INITIAL_IS_PENDING})
+            }
+            if(res.successMsg){
+                dispatch({type: REQUEST_SUCCESS, payload: res})
+                dispatch({type: INITIAL_IS_PENDING})
+            }
+        })
+        .catch(err => {
+            dispatch({type: REQUEST_FAILED, payload: err})
+            dispatch({type: INITIAL_IS_PENDING})
+        })
+}
 
 export const formSubmit = (bodyData,route) => (dispatch)=> {
     dispatch({type: REQUEST_PENDING})
@@ -21,13 +57,17 @@ export const formSubmit = (bodyData,route) => (dispatch)=> {
         .then(res => {
             if(res.errorMsg) {
                 dispatch(formHandler([true,true,res.errorMsg], IS_ALERT_OPEN))
+                dispatch({type: REQUEST_FAILED, payload: ''})
             }
 
             if(res.passwordNeed) {
                 dispatch(formHandler([true,false,'Please set the password for future use'], IS_ALERT_OPEN))
+                dispatch({type: REQUEST_FAILED, payload: ''})
             }
 
-            dispatch({type: REQUEST_SUCCESS, payload: res})
+            if(res.successMsg){
+                dispatch({type: REQUEST_SUCCESS, payload: res})
+            }
         })
         .catch(err => dispatch({type: REQUEST_FAILED, payload: err}))
 }
