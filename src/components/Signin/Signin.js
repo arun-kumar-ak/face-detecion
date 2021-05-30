@@ -50,6 +50,7 @@ const Signin = () =>{
         if(!emailPattern.test(formData.email)) {
             dispatch(formHandler([true,'enter valid email id'], IS_EMAIL_VALID))   
         }
+        return true
     }
 
     const passwordValidate = () => {
@@ -61,14 +62,19 @@ const Signin = () =>{
         if(formData.password.length < 8) {
             dispatch(formHandler([true,'password must greater than 8 characters'], IS_PASSWORD_VALID))
         }
+        return true
     }
 
     const onFormSubmit = () => {
-        let bodyData = {
-            email: formData.email,
-            password: formData.password
+        let email = emailValidate() 
+        let password = passwordValidate()
+        if(email && password) {
+            let bodyData = {
+                email: formData.email,
+                password: formData.password
+            }
+            dispatch(formSubmit(bodyData,'signin'))
         }
-        dispatch(formSubmit(bodyData,'signin'))
     }
 
     if(!responseData.isPending && responseData.data.successMsg === 'login successfully') {

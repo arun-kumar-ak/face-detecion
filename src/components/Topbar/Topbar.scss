@@ -1,0 +1,25 @@
+.root {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.appbar {
+    width: 90%;
+    height: 4.5rem;
+    position: relative;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.button {
+    font-size: 1em;
+    outline: none;
+    border: none;
+    background-color: rgb(245, 0, 87);
+    margin-left: 0.7em;
+
+    &:hover {
+        background-color: rgb(245, 0, 87);
+    }
+}

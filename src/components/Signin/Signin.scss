@@ -14,6 +14,10 @@
     }
 }
 
+.MuiSvgIcon-root {
+    font-size: 1em;
+}
+
 // media queries for responsive
 @media all and (min-width: 1024px) {
     .input-field {

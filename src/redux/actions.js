@@ -41,7 +41,7 @@ export const authUser = () => (dispatch)=> {
                 dispatch({type: INITIAL_IS_PENDING})
             }
             if(res.successMsg){
-                dispatch({type: REQUEST_SUCCESS, payload: res})
+                dispatch({type: REQUEST_SUCCESS, payload: res.user})
                 dispatch({type: INITIAL_IS_PENDING})
             }
         })
@@ -75,3 +75,7 @@ export const formSubmit = (bodyData,route) => (dispatch)=> {
 export const formHandler = (data,type) => (dispatch) => {
     dispatch({type: type, payload: data})
 }
+
+// export const dialogHandler = () => {
+
+// }

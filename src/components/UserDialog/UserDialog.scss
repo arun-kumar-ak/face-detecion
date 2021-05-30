@@ -1,0 +1,38 @@
+.dialog {
+    display: flex;
+    justify-content: center;
+
+    .inner-dialog {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 18em;
+        height: 18em;
+    }
+}
+
+.person-icon-avatar {
+    height: 3.5em;
+    width: 3.5em;
+    margin-top: 1em;
+    margin-bottom: 0.7em;
+}
+
+.MuiSvgIcon-root {
+    font-size: 3rem;
+}
+
+.list-item {
+    text-align: center;
+    padding: 2px;
+}
+
+.avatar {
+    color: white;
+    background-color: yellowgreen;
+}
+
+.icon-button:hover {
+    background-color: unset;
+}

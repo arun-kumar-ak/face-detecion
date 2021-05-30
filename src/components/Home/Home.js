@@ -1,10 +1,14 @@
 import React from 'react';
 
+// import Urlbar from '../Urlbar/Urlbar';
+import Topbar from '../Topbar/Topbar';
+
 const Home = () => {
     
     return (
         <div>
-            <h1>welcome to Home</h1>
+            <Topbar />
+            {/* <Urlbar /> */}
         </div>
     )
 }
