@@ -36,7 +36,7 @@ const UserDialog = () => {
                     </List>
                 </div>
             </Dialog>
-            <IconButton className="icon-button" onClick={() => dispatch({type: IS_DIALOG_OPEN, payload: !dialogData.open})}>
+            <IconButton className="dialog-icon-button" onClick={() => dispatch({type: IS_DIALOG_OPEN, payload: !dialogData.open})}>
                 <Avatar className="avatar">
                     {/* {responseData.data.username[0]} */}
                     A

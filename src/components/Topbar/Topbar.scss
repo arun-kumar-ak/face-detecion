@@ -1,25 +1,55 @@
-.root {
+.topbar-root {
     display: flex;
     justify-content: center;
     margin-top: 2.5rem;
-}
 
-.appbar {
-    width: 90%;
-    height: 4.5rem;
-    position: relative;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.button {
-    font-size: 1em;
-    outline: none;
-    border: none;
-    background-color: rgb(245, 0, 87);
-    margin-left: 0.7em;
-
-    &:hover {
+    .appbar {
+        width: 90%;
+        height: 4.5rem;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        border-radius: 3px;
         background-color: rgb(245, 0, 87);
+    }
+
+    .img-logo {
+        width: 3em;
+        height: 3em;
+        margin-left: 2em;
+    }
+
+    .button {
+        font-size: 1em;
+        outline: none;
+        border: none;
+        background-color: rgb(245, 0, 87);
+        margin-left: 0.7em;
+
+        &:hover {
+            background-color: rgb(245, 0, 87);
+        }
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .topbar-root {
+        .appbar {
+            width: 70%;
+        }
+    }
+}
+
+@media all and (max-width: 768px) { 
+    .topbar-root{
+        .appbar {
+            height: 4em;
+        }
+
+        .button {
+            margin-left: 0.5em;
+            font-size: 0.8em;
+        }
     }
 }

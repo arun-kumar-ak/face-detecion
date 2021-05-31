@@ -1,14 +1,23 @@
 import React from 'react';
 
-// import Urlbar from '../Urlbar/Urlbar';
 import Topbar from '../Topbar/Topbar';
+import Urlbar from '../Urlbar/Urlbar';
+
+import './Home.scss';
 
 const Home = () => {
     
     return (
-        <div>
-            <Topbar />
-            {/* <Urlbar /> */}
+        <div className="home-root">
+            <div className="home-topbar">
+                <Topbar />
+            </div>
+            <div className="home-image">
+                image
+            </div>
+            <div className="home-urlbar">
+                <Urlbar />
+            </div>
         </div>
     )
 }

@@ -1,38 +1,22 @@
-.root {
-    display: flex;
-    justify-content: center;
-}
+.urlbar-root {
+    .paper {
+        height: 5em;
+        width: 40em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.paper {
-    height: 70px;
-    width: 43em;
-    display: flex;
-    justify-content: center;
-    background-color: lightblue;
-}
+        .button {
+            height: 3.94em;
+            width: 7em;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
 
-.input, .button {
-    height: 50px;
-    padding: 0.5em;
-    align-self: center;
-    border: solid 0.8px rgba(223, 223, 223, 0.8);
-    border-radius: 5px;
-}
-
-.input {
-    width: 30em;
-    background-color: rgba(245, 245, 245, 0.80);
-    padding-left: 2em;
-    &:hover,&:focus-within {
-        background-color: rgba(255, 255, 255, 0.5);
+        .urlbar {
+            background-color: white;
+            border-radius: 3px;
+            width: 28em;
+        }
     }
-}
-
-.button {
-    outline: none;
-    width: 8em;
-    font-size: 0.85em;
-    font-weight: 1000;
-    color: white;
-    background-color: rgb(245, 0, 87);
 }

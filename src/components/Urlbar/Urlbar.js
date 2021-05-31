@@ -1,21 +1,17 @@
 import React from 'react';
 
-import { InputBase, Paper, Button, ButtonGroup } from '@material-ui/core';
+import { TextField, Button, Paper } from '@material-ui/core';
 
 import './Urlbar.scss';
 
 const Urlbar = () => {
     return (
-        <div className="root">
-            <Paper style={{backgroundColor: "lightblue"}} elevation={3} className="paper">
-                <ButtonGroup>
-                    <InputBase
-                        className="input"
-                        placeholder="Enter your image URL"
-                    />
-                    <Button
-                    className="button">Click</Button>
-                </ButtonGroup>
+        <div className="urlbar-root">
+            <Paper className="paper" >
+                <TextField label="Paste your image URL here" className="urlbar" color="primary" variant="outlined" />
+                <Button variant="contained" color="primary" className="button">
+                    Click
+                </Button>
             </Paper>
         </div>
     )

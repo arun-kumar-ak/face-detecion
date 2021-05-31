@@ -9,30 +9,55 @@
         align-items: center;
         width: 18em;
         height: 18em;
+
+        .person-icon-avatar {
+            height: 3.5em;
+            width: 3.5em;
+            margin-top: 1em;
+            margin-bottom: 0.7em;
+            
+            .MuiSvgIcon-root {
+                font-size: 3rem;
+            }    
+        }
+
+        .list-item {
+            text-align: center;
+            padding: 2px;
+        }
+    }
+}
+.dialog-icon-button {
+    .avatar {
+        color: white;
+        background-color: yellowgreen;
+    }
+
+    &:hover {
+        background-color: unset;
     }
 }
 
-.person-icon-avatar {
-    height: 3.5em;
-    width: 3.5em;
-    margin-top: 1em;
-    margin-bottom: 0.7em;
-}
+@media all and (max-width: 768px) { 
+    .dialog {
+        .inner-dialog {
+            height: 15em;
+            width: 15em;
 
-.MuiSvgIcon-root {
-    font-size: 3rem;
-}
+            .person-icon-avatar {
+                height: 3em;
+                width: 3em;
 
-.list-item {
-    text-align: center;
-    padding: 2px;
-}
-
-.avatar {
-    color: white;
-    background-color: yellowgreen;
-}
-
-.icon-button:hover {
-    background-color: unset;
+                .MuiSvgIcon-root {
+                    font-size: 2.5rem;
+                }  
+            }
+        }
+    }
+    .dialog-icon-button {
+        .avatar {
+            height: 1.8em;
+            width: 1.8em;
+        }
+    }
 }

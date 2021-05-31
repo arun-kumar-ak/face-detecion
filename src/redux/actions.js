@@ -72,10 +72,4 @@ export const formSubmit = (bodyData,route) => (dispatch)=> {
         .catch(err => dispatch({type: REQUEST_FAILED, payload: err}))
 }
 
-export const formHandler = (data,type) => (dispatch) => {
-    dispatch({type: type, payload: data})
-}
-
-// export const dialogHandler = () => {
-
-// }
+export const formHandler = (data,type) => ({type: type, payload: data})

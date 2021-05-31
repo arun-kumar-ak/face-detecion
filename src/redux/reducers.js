@@ -16,7 +16,10 @@ import {    REQUEST_PENDING,
 
 const initialData={
     data:{},
-    isPending: true,
+    isPending: false,
+    //temp
+    // isAuth: true,
+    // initialIsPending: false
     isAuth: false,
     initialIsPending: true
 }

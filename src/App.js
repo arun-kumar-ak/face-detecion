@@ -8,6 +8,7 @@ import { authUser } from './redux/actions';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
+import Urlbar from './components/Urlbar/Urlbar';
 // import Topbar from './components/Topbar/Topbar';
 // import UserDialog from './components/UserDialog/UserDialog';
 
@@ -40,6 +41,7 @@ class App extends Component {
               }} />
             <Route path="/signin" component={Signin} />
             <Route path="/register" component={Register} />
+            <Route path="/urlbar" component={Urlbar} />
           </Switch>
         </Router>
       </div>
