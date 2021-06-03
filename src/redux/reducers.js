@@ -11,6 +11,10 @@ import {    REQUEST_PENDING,
             IS_ALERT_OPEN,
             INITIAL_IS_PENDING,
             RESET,
+            IMG_URL,
+            IS_URL,
+            IMG_BOX_DATA,
+            IMG_WIDTH,
             IS_DIALOG_OPEN
         } from './constants';
 
@@ -18,10 +22,10 @@ const initialData={
     data:{},
     isPending: false,
     //temp
-    // isAuth: true,
-    // initialIsPending: false
-    isAuth: false,
-    initialIsPending: true
+    isAuth: true,
+    initialIsPending: false
+    // isAuth: false,
+    // initialIsPending: true
 }
 
 export const formSubmitReducer = (state=initialData, action) => {
@@ -57,6 +61,7 @@ const initialFormData = {
     email: '',
     password: '',
     username: '',
+    url: '',
     validation: {
         isConfirmPassword: '',
         isEmailValid: false,
@@ -130,7 +135,7 @@ export const formHandlerReducer = (state=initialFormData, action) => {
                     isAlertError: action.payload[1],
                     alertMsg: action.payload[2]
                 }
-            }
+            }            
         case RESET:
             return state = initialFormData
         default:
@@ -152,5 +157,39 @@ export const dialogBoxReducer = (state = initialDialogBox, action) => {
             }
         default:
             return state
+    }
+}
+
+const initialUrl = {
+    url: '',
+    isUrl: false,
+    imgBoxData: {},
+    imgWidth: 0
+}
+
+export const UrlHandlerReducer = (state = initialUrl, action) => {
+    switch (action.type) {
+        case IMG_URL:
+            return {
+                ...state,
+                url: action.payload
+            }
+        case IS_URL:
+            return {
+                ...state,
+                isUrl: true
+            }
+        case IMG_BOX_DATA:
+            return {
+                ...state,
+                imgBoxData: action.payload
+            }
+        case IMG_WIDTH:
+            return {
+                ...state,
+                imgWidth: action.payload
+            }
+        default:
+            return state;
     }
 }

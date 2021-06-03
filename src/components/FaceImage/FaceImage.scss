@@ -1,0 +1,33 @@
+.face-img-root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.face-img {
+    width: 400px;
+    height: 400px;
+}
+
+.bounding-box {
+    position: absolute;
+    box-shadow: 0 0 0 3px #149df2 inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+    .face-img {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media all and (max-width: 768px) { 
+    .face-img {
+        width: 300px;
+        height: 300px;
+    }
+}

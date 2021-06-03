@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import { CircularProgress } from '@material-ui/core';
+import dotenv from 'dotenv';
 
 import { authUser } from './redux/actions';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
-import Urlbar from './components/Urlbar/Urlbar';
-// import Topbar from './components/Topbar/Topbar';
-// import UserDialog from './components/UserDialog/UserDialog';
+import FaceImage from './components/FaceImage/FaceImage';
 
 const mapStateToProps = (state) => {
   return state;
@@ -18,12 +17,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    authUser: dispatch(authUser())
+    authUser: dispatch(authUser(process.env.REACT_APP_SERVER_URL+'authUser'))
   }    
 }
 
 class App extends Component {
   render(){
+    dotenv.config();
     return (
       <div className="App">
         <Router>
@@ -41,7 +41,7 @@ class App extends Component {
               }} />
             <Route path="/signin" component={Signin} />
             <Route path="/register" component={Register} />
-            <Route path="/urlbar" component={Urlbar} />
+            <Route path="/faceimage" component={FaceImage} />
           </Switch>
         </Router>
       </div>

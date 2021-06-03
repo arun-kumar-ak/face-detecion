@@ -17,3 +17,9 @@ export const RESET = "RESET";
 
 //DIALOG BOX constants
 export const IS_DIALOG_OPEN = "IS_DIALOG_OPEN";
+
+//URL Handler
+export const IS_URL = "IS_URL";
+export const IMG_URL = "IMG_URL";
+export const IMG_BOX_DATA = "IMG_BOX_DATA";
+export const IMG_WIDTH = "IMG_WIDTH";

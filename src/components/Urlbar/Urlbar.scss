@@ -5,18 +5,92 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
+        background: rgb(189, 85, 10);
         .button {
             height: 3.94em;
             width: 7em;
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
+
+            .img-button {
+                height: 3em;
+                width: 3em;
+            }
         }
 
         .urlbar {
             background-color: white;
             border-radius: 3px;
             width: 28em;
+        }
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .urlbar-root {
+        .paper {
+            height: 6rem;
+            width: 48rem;
+
+            .urlbar {
+                width: 36rem;
+            }
+            .button {
+                width: 8rem;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 768px) { 
+    .urlbar-root {
+        .paper {
+            height: 5rem;
+            width: 34rem;
+
+            .urlbar {
+                width: 26rem;
+            }
+            .button {
+                width: 6rem;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 610px) { 
+    .urlbar-root {
+        .paper {
+            height: 5rem;
+            width: 27rem;
+
+            .urlbar {
+                width: 20rem;
+            }
+            .button {
+                width: 5rem;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 421px) {
+    .urlbar-root {
+        .paper {
+            height: 5rem;
+            width: 20rem;
+
+            .urlbar {
+                width: 14rem;
+            }
+            .button {
+                width: 3.5rem;
+
+                .img-button {
+                    height: 2.5em;
+                    width: 2.5em;
+                }
+            }
         }
     }
 }

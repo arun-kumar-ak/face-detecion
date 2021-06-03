@@ -51,5 +51,27 @@
             margin-left: 0.5em;
             font-size: 0.8em;
         }
+
+        .img-logo {
+            margin-left: 1.3em;
+        }
+    }
+}
+
+@media all and (max-width: 421px) {
+    .topbar-root{
+        width: 22.4em;
+        .appbar {
+            height: 4em;
+        }
+
+        .button {
+            margin-left: 0.5em;
+            font-size: 0.8em;
+        }
+
+        .img-logo {
+            margin-left: 1.3em;
+        }
     }
 }
