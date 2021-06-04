@@ -1,8 +1,7 @@
 .topbar-root {
     display: flex;
     justify-content: center;
-    margin-top: 2.5rem;
-
+    align-items: center;
     .appbar {
         width: 90%;
         height: 4.5rem;
@@ -58,9 +57,27 @@
     }
 }
 
-@media all and (max-width: 421px) {
+@media all and (max-width: 400px) {
     .topbar-root{
-        width: 22.4em;
+        width: 100%;
+        .appbar {
+            height: 4em;
+        }
+
+        .button {
+            margin-left: 0.5em;
+            font-size: 0.8em;
+        }
+
+        .img-logo {
+            margin-left: 1.3em;
+        }
+    }
+}
+
+@media all and (min-width: 400px) and (max-width: 421px) {
+    .topbar-root{
+        width: 25.5em;
         .appbar {
             height: 4em;
         }

@@ -22,10 +22,10 @@ const initialData={
     data:{},
     isPending: false,
     //temp
-    isAuth: true,
-    initialIsPending: false
-    // isAuth: false,
-    // initialIsPending: true
+    // isAuth: true,
+    // initialIsPending: false
+    isAuth: false,
+    initialIsPending: true
 }
 
 export const formSubmitReducer = (state=initialData, action) => {
