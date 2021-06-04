@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress } from '@material-ui/core';
+import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress, Paper } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Alert from '@material-ui/lab/Alert';
 import LockIcon from '@material-ui/icons/Lock';
 import CloseIcon from '@material-ui/icons/Close';
-import GoogleButton from 'react-google-button';
 
 import './Signin.scss';
 
@@ -82,65 +81,66 @@ const Signin = () =>{
     }
 
     return (
-        <form className="grid-parent" noValidate autoComplete="off">
-            {!responseData.isPending ? <LockIcon color="secondary" style={{ fontSize: 60 }} className="mt" /> : <CircularProgress color="secondary" size={60} />}
-            <Collapse in={formData.validation.isAlertOpen}>
-                <Alert
-                    severity="error"
-                    action={
-                        <IconButton
-                        aria-label="close"
-                        color="inherit"
-                        size="small"
-                        onClick={() => dispatch(formHandler([!formData.validation.isAlertOpen, false, ''], IS_ALERT_OPEN))}
+        <div className="form-root">
+            <Paper elevation={3} className="paper">
+                <form className="grid-parent" noValidate autoComplete="off">
+                    {!responseData.isPending ? <LockIcon color="secondary" style={{ fontSize: 60 }} className="mt" /> : <CircularProgress color="secondary" size={60} />}
+                    <Collapse in={formData.validation.isAlertOpen}>
+                        <Alert
+                            severity="error"
+                            action={
+                                <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => dispatch(formHandler([!formData.validation.isAlertOpen, false, ''], IS_ALERT_OPEN))}
+                                >
+                                <CloseIcon fontSize="inherit" />
+                                </IconButton>
+                            }
                         >
-                        <CloseIcon fontSize="inherit" />
-                        </IconButton>
-                    }
-                >
-                {formData.validation.alertMsg}
-                </Alert>
-            </Collapse>
-            <TextField
-                id='standard-basic'
-                label="Email"
-                type="email"
-                name="email"
-                error={formData.validation.isEmailValid}
-                helperText={formData.validation.isEmailValid? formData.validation.emailErrorMsg:"     "}
-                className="input-field"
-                onChange={onFormHandler}
-                onBlur = {emailValidate}
-            />
-            <FormControl className="input-field mt" error={formData.validation.isPasswordValid}>
-                <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                <Input
-                    id="standard-adornment-password"
-                    type={formData.validation.showPassword? 'text' : 'password'}
-                    className=""
-                    name="password"
-                    onChange={onFormHandler}
-                    onBlur={passwordValidate}
-                    endAdornment={
-                        <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={() => dispatch(formHandler(!formData.validation.showPassword, IS_SHOW_PASSWORD)) }
-                        >
-                            {formData.validation.showPassword? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                        </InputAdornment>
-                    }
-                />
-                <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
-            </FormControl>
-            <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
-            <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
-            <p>or</p>
-            <GoogleButton
-                type="light"
-            />
-        </form>
+                        {formData.validation.alertMsg}
+                        </Alert>
+                    </Collapse>
+                    <TextField
+                        id='standard-basic'
+                        label="Email"
+                        type="email"
+                        name="email"
+                        error={formData.validation.isEmailValid}
+                        helperText={formData.validation.isEmailValid? formData.validation.emailErrorMsg:"     "}
+                        className="input-field"
+                        onChange={onFormHandler}
+                        onBlur = {emailValidate}
+                    />
+                    <FormControl className="input-field mt" error={formData.validation.isPasswordValid}>
+                        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                        <Input
+                            id="standard-adornment-password"
+                            type={formData.validation.showPassword? 'text' : 'password'}
+                            className=""
+                            name="password"
+                            onChange={onFormHandler}
+                            onBlur={passwordValidate}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={() => dispatch(formHandler(!formData.validation.showPassword, IS_SHOW_PASSWORD)) }
+                                >
+                                    {formData.validation.showPassword? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                                </InputAdornment>
+                            }
+                        />
+                        <FormHelperText id="component-helper-text">{formData.validation.passwordErrorMsg}</FormHelperText>
+                    </FormControl>
+                    <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
+                    <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
+                    <p>or</p>
+                </form>
+            </Paper>
+        </div>
     );
 }
 

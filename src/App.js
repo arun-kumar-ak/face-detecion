@@ -24,7 +24,7 @@ class App extends Component {
   render(){
     dotenv.config();
     return (
-      <div className="App">
+      <div className="App" style={{zIndex:20}}>
         <Router>
           <Switch>
             <Route path="/" exact render={() => {
@@ -42,6 +42,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
           </Switch>
         </Router>
+        
       </div>
     )
   }

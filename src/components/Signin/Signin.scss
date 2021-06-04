@@ -1,9 +1,22 @@
+.form-root {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .paper {
+        width: 40em;
+        height: 40em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 .grid-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
 
     .mt {
         margin-bottom: 16px;
@@ -29,11 +42,23 @@
     .input-field {
         width: 20em;
     }
+    .form-root {
+        .paper {
+            width: 30em;
+            height: 30em;
+        }
+    }
 }
 
 @media all and (max-width: 768px) { 
     .input-field {
         width: 15em;
+    }
+    .form-root {
+        .paper {
+            width: 25em;
+            height: 29em;
+        }
     }
     .grid-parent {
        .input-field {
@@ -41,5 +66,14 @@
                width: 15em+0.2em;
            }
        }
+    }
+}
+
+@media all and (max-width: 420px) {
+    .form-root {
+        .paper {
+            height: 29em;
+            width: 20em;
+        }
     }
 }

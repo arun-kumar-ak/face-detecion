@@ -1,0 +1,26 @@
+@media all and (max-width: 420px) {
+    .reg-form-root {
+        .reg-paper {
+            height: 35em;
+            width: 20em;
+        }
+    }
+}
+
+@media all and (max-width: 768px) { 
+    .reg-form-root {
+        .reg-paper {
+            height: 38em;
+            width: 25em;
+        }
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+    .reg-form-root {
+        .reg-paper {
+            height: 39em;
+            width: 30em;
+        }
+    }
+}
