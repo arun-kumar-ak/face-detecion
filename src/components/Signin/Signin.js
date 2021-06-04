@@ -106,7 +106,6 @@ const Signin = () =>{
                 label="Email"
                 type="email"
                 name="email"
-                // value={formData.username}
                 error={formData.validation.isEmailValid}
                 helperText={formData.validation.isEmailValid? formData.validation.emailErrorMsg:"     "}
                 className="input-field"
@@ -120,7 +119,6 @@ const Signin = () =>{
                     type={formData.validation.showPassword? 'text' : 'password'}
                     className=""
                     name="password"
-                    // value={formData.email}
                     onChange={onFormHandler}
                     onBlur={passwordValidate}
                     endAdornment={

@@ -9,7 +9,6 @@ import { authUser } from './redux/actions';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
-import FaceImage from './components/FaceImage/FaceImage';
 
 const mapStateToProps = (state) => {
   return state;
@@ -41,7 +40,6 @@ class App extends Component {
               }} />
             <Route path="/signin" component={Signin} />
             <Route path="/register" component={Register} />
-            <Route path="/faceimage" component={FaceImage} />
           </Switch>
         </Router>
       </div>

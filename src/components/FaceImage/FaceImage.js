@@ -68,5 +68,3 @@ class FaceImage extends Component {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(FaceImage);
-
-// https://www.esafety.gov.au/sites/default/files/2019-08/Remove%20images%20and%20video.jpg
