@@ -14,6 +14,7 @@ export const IS_NAME = "IS_NAME";
 export const IS_ALERT_OPEN = "IS_ALERT_OPEN";
 export const INITIAL_IS_PENDING = "INITIAL_IS_PENDING";
 export const RESET = "RESET";
+export const LOGOUT ="LOGOUT";
 
 //DIALOG BOX constants
 export const IS_DIALOG_OPEN = "IS_DIALOG_OPEN";

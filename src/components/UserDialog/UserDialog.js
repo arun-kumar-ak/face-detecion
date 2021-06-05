@@ -10,7 +10,7 @@ import './UserDialog.scss';
 
 const UserDialog = () => {
     const state = useSelector(state => state)
-    // const responseData = state.responseData;
+    const user = state.responseData.data;
     const dialogData = state.dialogData;
     const dispatch = useDispatch();
     return (
@@ -23,14 +23,14 @@ const UserDialog = () => {
                     <List>
                         <ListItem className="list-item">
                             <ListItemText>
-                                {/* {responseData.data.username} */}
-                                Arun Kumar
+                                {user.username}
+                                {/* Arun Kumar */}
                             </ListItemText>
                         </ListItem>
                         <ListItem className="list-item">
                             <ListItemText>
-                                {/* {responseData.data.email} */}
-                                arunkumar@gmail.com
+                                {user.email}
+                                {/* arunkumar@gmail.com */}
                             </ListItemText>
                         </ListItem>
                     </List>
@@ -38,8 +38,8 @@ const UserDialog = () => {
             </Dialog>
             <IconButton className="dialog-icon-button" onClick={() => dispatch({type: IS_DIALOG_OPEN, payload: !dialogData.open})}>
                 <Avatar className="avatar">
-                    {/* {responseData.data.username[0]} */}
-                    A
+                    {user.username[0]}
+                    {/* A */}
                 </Avatar>
             </IconButton>
         </div>

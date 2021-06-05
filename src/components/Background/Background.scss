@@ -3,11 +3,11 @@ svg {
   height: 100%;
   margin: 0; padding: 0;
   display: block;
-}
 
-svg:hover [filter],
-svg:active [filter]
-{filter: none;}
+  &:hover, &:active {
+    filter: none;
+  }
+}
 
 #p {
   fill: black;
@@ -16,14 +16,14 @@ svg:active [filter]
   stroke-width: 2.3px;
   stroke-dasharray: 200 188.5;
   animation: stroke-color 11s infinite linear;
-}
-#p .wrapper, #p use {
-  animation: draw 4s infinite linear;  
-}
-#p use:nth-child(3){
-  fill: white;
-  fill-opacity: 0.1;
-  animation-delay: -2s;
+  .wrapper, use {
+    animation: draw 4s infinite linear;  
+  }
+  use:nth-child(3){
+    fill: white;
+    fill-opacity: 0.1;
+    animation-delay: -2s;
+  }
 }
 
 :root {

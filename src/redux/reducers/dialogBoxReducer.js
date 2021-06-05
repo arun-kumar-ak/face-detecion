@@ -1,4 +1,4 @@
-import {IS_DIALOG_OPEN} from '../constants';
+import {IS_DIALOG_OPEN, RESET} from '../constants';
 
 //dialog box reducer
 const initialDialogBox = {
@@ -12,6 +12,8 @@ export const dialogBoxReducer = (state = initialDialogBox, action) => {
                 ...state,
                 open: action.payload
             }
+        case RESET:
+            return state = initialDialogBox;
         default:
             return state
     }

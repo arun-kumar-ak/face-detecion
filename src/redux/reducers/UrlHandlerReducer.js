@@ -1,7 +1,8 @@
 import {IMG_URL,
         IS_URL,
         IMG_BOX_DATA,
-        IMG_WIDTH
+        IMG_WIDTH,
+        RESET
 } from '../constants';
 
 const initialUrl = {
@@ -33,6 +34,8 @@ export const UrlHandlerReducer = (state = initialUrl, action) => {
                 ...state,
                 imgWidth: action.payload
             }
+        case RESET:
+            return state = initialUrl;
         default:
             return state;
     }

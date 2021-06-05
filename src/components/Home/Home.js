@@ -9,6 +9,7 @@ import './Home.scss';
 const Home = () => {
     return (
         <div className="home-super-root">
+            {/* <h1 style={{textAlign:'center', color: 'Background'}}>Face Detection App</h1> */}
             <div className="home-root">
                 <div className="home-topbar">
                     <Topbar />

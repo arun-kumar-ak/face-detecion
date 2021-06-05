@@ -1,17 +1,18 @@
 import {REQUEST_PENDING, 
         REQUEST_SUCCESS, 
         REQUEST_FAILED,  
-        INITIAL_IS_PENDING
+        INITIAL_IS_PENDING,
+        RESET
     } from '../constants';
 
 const initialData={
     data:{},
     isPending: false,
     //temp
-    isAuth: true,
-    initialIsPending: false
-    // isAuth: false,
-    // initialIsPending: true
+    // isAuth: true,
+    // initialIsPending: false
+    isAuth: false,
+    initialIsPending: true
 }
 
 export const formSubmitReducer = (state=initialData, action) => {
@@ -29,6 +30,7 @@ export const formSubmitReducer = (state=initialData, action) => {
         case REQUEST_SUCCESS:
             return {
                 ...state,
+                initialIsPending: false,
                 data: action.payload,
                 isPending: false,
                 isAuth: true
@@ -39,6 +41,8 @@ export const formSubmitReducer = (state=initialData, action) => {
                 error: action.payload,
                 isPending: false
             }
+        case RESET:
+            return state = initialData;
         default:
             return state
     }

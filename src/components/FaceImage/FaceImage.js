@@ -20,16 +20,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class FaceImage extends Component {
-    
     onimgload = ({target: img}) => {
         console.log(img.offsetWidth)
         this.props.imgWidthLoader(img)
     }
-
-    // sample =() => {
-    //     document.querySelectorAll('.bounding-box').forEach(el => el.remove());
-    //     this.render()
-    // }
 
     render() {
         const { urlData, errorEmptyImg } = this.props;
@@ -42,7 +36,6 @@ class FaceImage extends Component {
                         className="face-img"
                         alt="face detect img"
                         onLoad={this.onimgload}
-                        // onClick={this.sample}
                         onError={() => {
                             errorEmptyImg()
                         }}

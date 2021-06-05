@@ -12,8 +12,8 @@ import Background from './components/Background/Background';
 ReactDOM.render(
   <StylesProvider injectFirst>
     <Provider store={store}>
-      <App />
-      <Background />
+        <App />
+        <Background />
     </Provider>
   </StylesProvider>,
   document.getElementById('root')

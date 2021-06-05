@@ -4,7 +4,9 @@ import {
         REQUEST_FAILED,
         IS_ALERT_OPEN,
         IMG_BOX_DATA,
-        INITIAL_IS_PENDING
+        INITIAL_IS_PENDING,
+        LOGOUT,
+        RESET
         } from './constants';
 
 const apiCallPost = (url,bodyData) => fetch(url,{
@@ -12,14 +14,13 @@ const apiCallPost = (url,bodyData) => fetch(url,{
         headers: {
             'Content-Type': 'application/json'
         },
-        // mode: 'cors',
         credentials: 'include',
         body: JSON.stringify(bodyData)
     }).then(resp => {
         return resp.json()
     })
 
-const apiCallGet = (url) => fetch(url, {
+export const apiCallGet = (url) => fetch(url, {
             method: 'get',
             credentials: 'include'
         }).then(resp => {
@@ -85,5 +86,18 @@ export const faceDetect = (url) => (dispatch) => {
     apiCallGet(url)
         .then(res => {
             dispatch({type: IMG_BOX_DATA, payload: res})
+        })
+}
+
+export const logout = (url) => (dispatch) => {
+    apiCallGet(url)
+        .then((res) => {
+            if(res.successMsg) {
+                dispatch({type: LOGOUT, payload: true})
+                setTimeout(()=> {
+                    dispatch({type: RESET})
+                    dispatch({type: INITIAL_IS_PENDING})
+                },1000)
+            }
         })
 }
