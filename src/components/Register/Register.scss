@@ -7,7 +7,7 @@
     }
 }
 
-@media all and (max-width: 768px) { 
+@media all and (min-width: 420px) and (max-width: 768px) { 
     .reg-form-root {
         .reg-paper {
             height: 38em;
