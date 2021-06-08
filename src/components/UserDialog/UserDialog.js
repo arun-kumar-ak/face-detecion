@@ -10,7 +10,7 @@ import './UserDialog.scss';
 
 const UserDialog = () => {
     const state = useSelector(state => state)
-    const user = state.responseData.data;
+    const user = state.responseData.data.user;
     const dialogData = state.dialogData;
     const dispatch = useDispatch();
     return (

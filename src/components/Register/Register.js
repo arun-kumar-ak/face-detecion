@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 
 import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress, Paper } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -100,7 +100,8 @@ const Register = () => {
         }
     }
 
-    if(!responseData.isPending && responseData.data.successMsg === 'register successfully') {
+    if(responseData.data.successMsg === 'register successfully') {
+        console.log('executed')
         return <Redirect to='/' />
     }
 
@@ -193,7 +194,7 @@ const Register = () => {
                     </FormControl>
                     <Button variant="contained" size="large" color="secondary" className="mt" onClick={onFormSubmit}>Register</Button>
                     <p>Already have an account <Link to="/signin"><span onClick={() => dispatch(formHandler('',RESET))}>SignIn</span></Link></p>
-                    <p>or</p>
+                    {/* <p>or</p> */}
                 </form>
             </Paper>
         </div>

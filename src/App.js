@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import { CircularProgress } from '@material-ui/core';
@@ -13,7 +13,7 @@ import Home from './components/Home/Home';
 const mapStateToProps = (state) => {
   return state;
 }
-
+// https://face-detection-api-fda.herokuapp.com/
 const mapDispatchToProps = (dispatch) => {
   return {
     authUser: dispatch(authUser(process.env.REACT_APP_SERVER_URL+'authUser'))

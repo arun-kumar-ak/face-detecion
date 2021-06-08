@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+// import GoogleLogin from 'react-google-login';
 
 import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress, Paper } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -76,7 +77,7 @@ const Signin = () =>{
         }
     }
 
-    if(!responseData.isPending && responseData.data.successMsg === 'login successfully') {
+    if(responseData.data.successMsg === 'login successfully') {
         return <Redirect to='/' />
     }
 
@@ -137,7 +138,11 @@ const Signin = () =>{
                     </FormControl>
                     <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
                     <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
-                    <p>or</p>
+                    {/* <p>or</p>
+                    <GoogleLogin 
+                        buttonText="Login with Google"
+                        className="googleButton"
+                    /> */}
                 </form>
             </Paper>
         </div>

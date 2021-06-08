@@ -14,6 +14,7 @@ const apiCallPost = (url,bodyData) => fetch(url,{
         headers: {
             'Content-Type': 'application/json'
         },
+        mode: 'cors',
         credentials: 'include',
         body: JSON.stringify(bodyData)
     }).then(resp => {
@@ -21,6 +22,7 @@ const apiCallPost = (url,bodyData) => fetch(url,{
     })
 
 export const apiCallGet = (url) => fetch(url, {
+            mode: 'cors',
             method: 'get',
             credentials: 'include'
         }).then(resp => {
@@ -48,7 +50,7 @@ export const authUser = (url) => (dispatch)=> {
                 dispatch({type: INITIAL_IS_PENDING})
             }
             if(res.successMsg){
-                dispatch({type: REQUEST_SUCCESS, payload: res.user})
+                dispatch({type: REQUEST_SUCCESS, payload: res})
                 dispatch({type: INITIAL_IS_PENDING})
             }
         })
@@ -60,7 +62,7 @@ export const authUser = (url) => (dispatch)=> {
 
 export const formSubmit = (bodyData,route) => (dispatch)=> {
     dispatch({type: REQUEST_PENDING})
-    apiCallPost(`http://localhost:3002/${route}`,bodyData)
+    apiCallPost(`${process.env.REACT_APP_SERVER_URL}${route}`,bodyData)
         .then(res => {
             if(res.errorMsg) {
                 dispatch(formHandler([true,true,res.errorMsg], IS_ALERT_OPEN))
@@ -73,7 +75,7 @@ export const formSubmit = (bodyData,route) => (dispatch)=> {
             }
 
             if(res.successMsg){
-                dispatch({type: REQUEST_SUCCESS, payload: res.user})
+                dispatch({type: REQUEST_SUCCESS, payload: res})
             }
         })
         .catch(err => dispatch({type: REQUEST_FAILED, payload: err}))
