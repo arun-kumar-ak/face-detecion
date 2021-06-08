@@ -14,10 +14,7 @@ const apiCallPost = (url,bodyData) => fetch(url,{
         headers: {
             'Content-Type': 'application/json'
         },
-        mode: 'cors',
-        header: {
-            'Access-Control-Allow-Origin':'*',
-        },
+        mode:'cors',
         credentials: 'include',
         body: JSON.stringify(bodyData)
     }).then(resp => {
@@ -25,12 +22,9 @@ const apiCallPost = (url,bodyData) => fetch(url,{
     })
 
 export const apiCallGet = (url) => fetch(url, {
-            mode: 'cors',
             method: 'get',
             credentials: 'include',
-            header: {
-                'Access-Control-Allow-Origin':'*',
-            }
+            mode:'cors'
         }).then(resp => {
             return resp.json()
         })
