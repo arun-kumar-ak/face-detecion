@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 // https://face-detection-api-fda.herokuapp.com/
 const mapDispatchToProps = (dispatch) => {
   return {
-    authUser: dispatch(authUser(process.env.REACT_APP_SERVER_URL+'authUser'))
+    authUser: dispatch(authUser('authUser'))
   }    
 }
 

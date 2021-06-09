@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import { formSubmitReducer } from './reducers/formSubmitReducer';
@@ -14,4 +14,4 @@ const rootReducer = combineReducers({
         urlData: UrlHandlerReducer
     })
 
-export const store = createStore(rootReducer,applyMiddleware(thunk));
+export const store = process.env.NODE_ENV==="development" ? createStore(rootReducer,applyMiddleware(thunk,logger)) :createStore(rootReducer,applyMiddleware(thunk));

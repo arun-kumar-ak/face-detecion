@@ -9,6 +9,8 @@ import {
         RESET
         } from './constants';
 
+var url = process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_SERVER_URL : process.env.REACT_APP_SERVER_URL
+
 const apiCallPost = (url,bodyData) => fetch(url,{
         method: 'post',
         headers: {
@@ -29,9 +31,9 @@ export const apiCallGet = (url) => fetch(url, {
             return resp.json()
         })
 
-export const authUser = (url) => (dispatch)=> {
+export const authUser = (route) => (dispatch)=> {
     dispatch({type: REQUEST_PENDING})
-    apiCallGet(url)
+    apiCallGet(url+route)
         .then(res => {
             if(res.errorMsg) {
                 dispatch(formHandler([true,true,res.errorMsg], IS_ALERT_OPEN))
@@ -62,7 +64,7 @@ export const authUser = (url) => (dispatch)=> {
 
 export const formSubmit = (bodyData,route) => (dispatch)=> {
     dispatch({type: REQUEST_PENDING})
-    apiCallPost(`${process.env.REACT_APP_SERVER_URL}${route}`,bodyData)
+    apiCallPost(`${url}${route}`,bodyData)
         .then(res => {
             if(res.errorMsg) {
                 dispatch(formHandler([true,true,res.errorMsg], IS_ALERT_OPEN))
@@ -83,16 +85,16 @@ export const formSubmit = (bodyData,route) => (dispatch)=> {
 
 export const formHandler = (data,type) => ({type: type, payload: data})
 
-export const faceDetect = (url) => (dispatch) => {
+export const faceDetect = (route) => (dispatch) => {
     dispatch({type: REQUEST_PENDING})
-    apiCallGet(url)
+    apiCallGet(url+route)
         .then(res => {
             dispatch({type: IMG_BOX_DATA, payload: res})
         })
 }
 
-export const logout = (url) => (dispatch) => {
-    apiCallGet(url)
+export const logout = (route) => (dispatch) => {
+    apiCallGet(url+route)
         .then((res) => {
             if(res.successMsg) {
                 dispatch({type: LOGOUT, payload: true})

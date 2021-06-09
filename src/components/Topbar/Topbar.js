@@ -19,7 +19,7 @@ const Topbar = () => {
                     <UserDialog />
                     <Button variant="contained" className="button" color="inherit"
                      onClick={() =>{
-                        dispatch(logout(process.env.REACT_APP_SERVER_URL+'logout'))
+                        dispatch(logout('logout'))
                     }}
                     >Logout</Button>
                 </Toolbar>

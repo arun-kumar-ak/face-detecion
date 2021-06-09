@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class FaceImage extends Component {
     onimgload = ({target: img}) => {
-        console.log(img.offsetWidth)
         this.props.imgWidthLoader(img)
     }
 

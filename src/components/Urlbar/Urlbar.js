@@ -26,7 +26,7 @@ const Urlbar = () => {
                 <Button 
                     onClick={() => {
                         dispatch({type: IS_URL})
-                        dispatch(faceDetect(process.env.REACT_APP_SERVER_URL+`face-detect/?url=${urlData.url}`))
+                        dispatch(faceDetect(`face-detect/?url=${urlData.url}`))
                     }}
                     variant="contained" color="secondary" className="button">
                     <img alt="img-button" src={ImgButton} className="img-button" />
