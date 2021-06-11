@@ -32,6 +32,15 @@
     justify-content: center;
 }
 
+.googleButton {
+    div {
+        svg {
+            height: 20px;
+            width: 25px;
+        }
+    }
+}
+
 .MuiSvgIcon-root {
     font-size: 1em;
 }

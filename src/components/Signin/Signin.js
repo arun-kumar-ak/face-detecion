@@ -145,6 +145,7 @@ const Signin = () =>{
                     <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
                     <p>or</p>
                     <GoogleLogin 
+                        style={{width: '20em'}}
                         buttonText="Signin with Google"
                         className="googleButton"
                         clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}
