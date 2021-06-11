@@ -28,7 +28,6 @@
 }
 
 .googleButton {
-    width: 20em;
     color: black;
     justify-content: center;
 }
@@ -42,6 +41,9 @@
     .input-field {
         width: 25em;
     }
+    .googleButton {
+        width: 22em;
+    }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) { 
@@ -53,6 +55,9 @@
             width: 30em;
             height: 30em;
         }
+    }
+    .googleButton {
+        width: 21em;
     }
 }
 
@@ -73,6 +78,9 @@
            }
        }
     }
+    .googleButton {
+        width: 20em;
+    }
 }
 
 @media all and (max-width: 420px) {
@@ -81,5 +89,8 @@
             height: 29em;
             width: 20em;
         }
+    }
+    .googleButton {
+        width: 18em;
     }
 }
