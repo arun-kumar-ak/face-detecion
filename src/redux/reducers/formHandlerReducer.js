@@ -7,13 +7,15 @@ import {IS_EMAIL,
         IS_NAME,
         IS_ALERT_OPEN,
         LOGOUT,
-        RESET
+        RESET,
+        IS_PICTURE
     } from '../constants';
     
 const initialFormData = {
     email: '',
     password: '',
     username: '',
+    picture: '',
     logout: false,
     validation: {
         isConfirmPassword: '',
@@ -44,6 +46,11 @@ export const formHandlerReducer = (state=initialFormData, action) => {
             return {
                 ...state,
                 password: action.payload
+            }
+        case IS_PICTURE:
+            return {
+                ...state,
+                picture: action.payload
             }
         case IS_CONFIRM_PASSWORD:
             return {

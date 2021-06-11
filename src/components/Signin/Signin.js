@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-// import GoogleLogin from 'react-google-login';
+import { Link, Redirect, useHistory } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
 
 import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress, Paper } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -11,7 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import './Signin.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { formHandler, formSubmit } from '../../redux/actions';
+import { formHandler, formSubmit, googleAuth } from '../../redux/actions';
 import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID, IS_ALERT_OPEN, RESET } from '../../redux/constants';
 
 var email_len_cnt=0;
@@ -23,6 +23,7 @@ const Signin = () =>{
     const formData = state.formData;
     const responseData = state.responseData;
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const onFormHandler = (e) => {
         e.preventDefault();
@@ -75,6 +76,10 @@ const Signin = () =>{
             }
             dispatch(formSubmit(bodyData,'signin'))
         }
+    }
+
+    const onGoogleSuccess = (response) => {
+        dispatch(googleAuth('auth/google', response.profileObj, history))
     }
 
     if(responseData.data.successMsg === 'login successfully') {
@@ -138,11 +143,14 @@ const Signin = () =>{
                     </FormControl>
                     <Button variant="contained" size="large" color="secondary" onClick={onFormSubmit} className="mt">SignIn</Button>
                     <p>If you are new to Here <Link to="/register"><span onClick={() => dispatch(formHandler('',RESET))}>Register</span></Link></p>
-                    {/* <p>or</p>
+                    <p>or</p>
                     <GoogleLogin 
-                        buttonText="Login with Google"
+                        buttonText="Signin with Google"
                         className="googleButton"
-                    /> */}
+                        clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                        onSuccess={onGoogleSuccess}
+                        // cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </Paper>
         </div>

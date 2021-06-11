@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link,Redirect } from 'react-router-dom';
+import { Link,Redirect, useHistory } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
 
 import { Button,FormControl, TextField, IconButton, Input, InputLabel, InputAdornment, FormHelperText, Collapse, CircularProgress, Paper } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -11,7 +12,7 @@ import '../Signin/Signin.scss';
 import './Register.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { formHandler,formSubmit } from '../../redux/actions';
+import { formHandler,formSubmit, googleAuth } from '../../redux/actions';
 import { IS_EMAIL, IS_PASSWORD, IS_CONFIRM_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD,IS_PASSWORD_VALID,IS_NAME,RESET,IS_ALERT_OPEN } from '../../redux/constants';
 
 var email_len_cnt = 0;
@@ -23,6 +24,7 @@ const Register = () => {
     const formData = state.formData;
     const responseData = state.responseData;
     const dispatch = useDispatch();
+    const history = useHistory;
 
     const onFormHandler = (e) => {
         e.preventDefault();
@@ -94,14 +96,18 @@ const Register = () => {
             let bodyData = {
                 username: formData.username,
                 email: formData.email,
+                picture: formData.picture,
                 password: formData.password
             }
             dispatch(formSubmit(bodyData,'register'))
         }
     }
 
+    const onGoogleSuccess = (response) => {
+        dispatch(googleAuth('auth/google', response.profileObj, history))
+    }
+
     if(responseData.data.successMsg === 'register successfully') {
-        console.log('executed')
         return <Redirect to='/' />
     }
 
@@ -132,16 +138,15 @@ const Register = () => {
                         label="Username"
                         type="text"
                         name="username"
-                        value = {responseData.data.user ? responseData.data.user.username : formData.username}
+                        value = {formData.username}
                         className="input-field mt"
                         onChange={onFormHandler}
                     />
                     <TextField
-                        id='standard-basic'
                         label="Email"
                         type="email"
                         name="email"
-                        value = {responseData.data.user ? responseData.data.user.email : formData.email}
+                        value = {formData.email}
                         error={formData.validation.isEmailValid}
                         helperText={formData.validation.isEmailValid? formData.validation.emailErrorMsg:"     "}
                         className="input-field"
@@ -151,7 +156,7 @@ const Register = () => {
                     <FormControl className="input-field" error={formData.validation.isPasswordValid}>
                         <InputLabel htmlFor="standard-adornment-password" >Password</InputLabel>
                         <Input
-                            id="standard-adornment-password"
+                            // id="standard-adornment-password"
                             type={formData.validation.showPassword? 'text' : 'password'}
                             className=""
                             name="password"
@@ -194,7 +199,14 @@ const Register = () => {
                     </FormControl>
                     <Button variant="contained" size="large" color="secondary" className="mt" onClick={onFormSubmit}>Register</Button>
                     <p>Already have an account <Link to="/signin"><span onClick={() => dispatch(formHandler('',RESET))}>SignIn</span></Link></p>
-                    {/* <p>or</p> */}
+                    <p>or</p>
+                    <GoogleLogin 
+                        buttonText="Register with Google"
+                        className="googleButton"
+                        clientId = {process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                        onSuccess={onGoogleSuccess}
+                        // cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </Paper>
         </div>

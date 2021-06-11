@@ -6,7 +6,10 @@ import {
         IMG_BOX_DATA,
         INITIAL_IS_PENDING,
         LOGOUT,
-        RESET
+        RESET,
+        IS_NAME,
+        IS_EMAIL,
+        IS_PICTURE
         } from './constants';
 
 var url = process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_SERVER_URL : process.env.REACT_APP_SERVER_URL
@@ -91,6 +94,26 @@ export const faceDetect = (route) => (dispatch) => {
         .then(res => {
             dispatch({type: IMG_BOX_DATA, payload: res})
         })
+}
+
+export const googleAuth = (route,bodyData,history) => (dispatch) => {
+    dispatch({type: REQUEST_PENDING})
+    apiCallPost(url+route, {email: bodyData.email})
+        .then((res) => {
+            if(res.successMsg){
+                dispatch({type: REQUEST_SUCCESS, payload: res})
+            }
+            if(res.passwordNeed) {
+                history.push('/register')
+                dispatch(formHandler([true,false,'Please set the password for future use'], IS_ALERT_OPEN))
+                dispatch({type: IS_NAME, payload: bodyData.name})
+                dispatch({type: IS_EMAIL, payload: bodyData.email})
+                dispatch({type: IS_PICTURE, payload: bodyData.imageUrl})
+                dispatch({type: REQUEST_FAILED, payload: ''})
+                
+            }
+        })
+        .catch(err => dispatch({type: REQUEST_FAILED, payload: err}))
 }
 
 export const logout = (route) => (dispatch) => {
