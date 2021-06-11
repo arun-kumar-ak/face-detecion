@@ -82,7 +82,7 @@ const Signin = () =>{
         dispatch(googleAuth('auth/google', response.profileObj, history))
     }
 
-    if(responseData.data.successMsg === 'login successfully') {
+    if(responseData.data.successMsg === 'login successfully' || responseData.data.successMsg === 'google login successfully') {
         return <Redirect to='/' />
     }
 

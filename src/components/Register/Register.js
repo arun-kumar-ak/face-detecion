@@ -107,7 +107,7 @@ const Register = () => {
         dispatch(googleAuth('auth/google', response.profileObj, history))
     }
 
-    if(responseData.data.successMsg === 'register successfully') {
+    if(responseData.data.successMsg === 'register successfully' || responseData.data.successMsg === 'google login successfully') {
         return <Redirect to='/' />
     }
 
