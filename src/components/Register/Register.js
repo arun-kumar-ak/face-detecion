@@ -25,7 +25,7 @@ const Register = () => {
     const formData = state.formData;
     const responseData = state.responseData;
     const dispatch = useDispatch();
-    const history = useHistory;
+    const history = useHistory();
 
     const onFormHandler = (e) => {
         e.preventDefault();
