@@ -6,7 +6,7 @@ import { TextField, Button, Paper } from '@material-ui/core';
 import './Urlbar.scss';
 import ImgButton from '../../assets/face_scan_icon_149480.png';
 import { IMG_URL, IS_URL } from '../../redux/constants';
-import { faceDetect } from '../../redux/actions';
+import { faceDetect } from '../../redux/actions/faceDetectionAction';
 
 const Urlbar = () => {
     const dispatch = useDispatch();

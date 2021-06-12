@@ -5,7 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { CircularProgress } from '@material-ui/core';
 import dotenv from 'dotenv';
 
-import { authUser } from './redux/actions';
+import { authUser } from './redux/actions/authAction';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';

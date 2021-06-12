@@ -11,7 +11,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import './Signin.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { formHandler, formSubmit, googleAuth } from '../../redux/actions';
+import { googleAuth } from '../../redux/actions/authAction';
+import { formHandler,formSubmit } from '../../redux/actions/formAction';
 import { IS_EMAIL, IS_PASSWORD, IS_EMAIL_VALID, IS_SHOW_PASSWORD, IS_PASSWORD_VALID, IS_ALERT_OPEN, RESET } from '../../redux/constants';
 
 var email_len_cnt=0;

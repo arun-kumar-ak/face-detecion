@@ -7,7 +7,7 @@ import UserDialog from '../UserDialog/UserDialog';
 import './Topbar.scss';
 import FaceIcon from '../../assets/face-scan.png';
 
-import { logout } from '../../redux/actions';
+import { logout } from '../../redux/actions/logoutAction';
 
 const Topbar = () => {
     const dispatch = useDispatch();
