@@ -16,12 +16,15 @@ export const IS_ALERT_OPEN = "IS_ALERT_OPEN";
 export const INITIAL_IS_PENDING = "INITIAL_IS_PENDING";
 export const RESET = "RESET";
 export const LOGOUT ="LOGOUT";
+export const LOGOUT_REQUEST_PENDING = "LOGOUT_REQUEST_PENDING";
+export const LOGOUT_REQUEST_SUCCESS = "LOGOUT_REQUEST_SUCCESS";
 
 //DIALOG BOX constants
 export const IS_DIALOG_OPEN = "IS_DIALOG_OPEN";
 
 //URL Handler
-export const IS_URL = "IS_URL";
 export const IMG_URL = "IMG_URL";
 export const IMG_BOX_DATA = "IMG_BOX_DATA";
 export const IMG_WIDTH = "IMG_WIDTH";
+export const URL_REQUEST_PENDING = "URL_REQUEST_PENDING";
+export const URL_REQUEST_SUCCESS = "URL_REQUEST_SUCCESS";

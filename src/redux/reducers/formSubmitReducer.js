@@ -2,12 +2,15 @@ import {REQUEST_PENDING,
         REQUEST_SUCCESS, 
         REQUEST_FAILED,  
         INITIAL_IS_PENDING,
-        RESET
+        RESET,
+        LOGOUT_REQUEST_PENDING,
+        LOGOUT_REQUEST_SUCCESS
     } from '../constants';
 
 const initialData={
     data:{},
     isPending: false,
+    logoutIsPending: false,
     //temp
     // isAuth: true,
     // initialIsPending: false
@@ -40,6 +43,16 @@ export const formSubmitReducer = (state=initialData, action) => {
                 ...state,
                 error: action.payload,
                 isPending: false
+            }
+        case LOGOUT_REQUEST_PENDING:
+            return {
+                ...state,
+                logoutIsPending: true
+            }
+        case LOGOUT_REQUEST_SUCCESS:
+            return {
+                ...state,
+                logoutIsPending: false
             }
         case RESET:
             return state = initialData;

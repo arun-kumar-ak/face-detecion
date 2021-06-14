@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { AppBar, Toolbar, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Button, CircularProgress } from '@material-ui/core';
 
 import UserDialog from '../UserDialog/UserDialog';
 import './Topbar.scss';
@@ -11,6 +11,8 @@ import { logout } from '../../redux/actions/logoutAction';
 
 const Topbar = () => {
     const dispatch = useDispatch();
+    const responseData = useSelector(state => state.responseData)
+    
     return (
         <div className="topbar-root">
             <AppBar className="appbar">
@@ -21,7 +23,9 @@ const Topbar = () => {
                      onClick={() =>{
                         dispatch(logout('logout'))
                     }}
-                    >Logout</Button>
+                    >
+                        {responseData.logoutIsPending ? <CircularProgress size={30} /> : "Logout"}
+                    </Button>
                 </Toolbar>
             </AppBar>
         </div>

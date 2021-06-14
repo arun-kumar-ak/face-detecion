@@ -1,13 +1,15 @@
-import {IMG_URL,
-        IS_URL,
-        IMG_BOX_DATA,
-        IMG_WIDTH,
-        RESET
+import {
+    IMG_URL,
+    URL_REQUEST_PENDING,
+    IMG_BOX_DATA,
+    IMG_WIDTH,
+    RESET,
+    URL_REQUEST_SUCCESS
 } from '../constants';
 
 const initialUrl = {
     url: '',
-    isUrl: false,
+    urlIsPending: false,
     imgBoxData: {},
     imgWidth: 0
 }
@@ -19,11 +21,6 @@ export const UrlHandlerReducer = (state = initialUrl, action) => {
                 ...state,
                 url: action.payload
             }
-        case IS_URL:
-            return {
-                ...state,
-                isUrl: true
-            }
         case IMG_BOX_DATA:
             return {
                 ...state,
@@ -33,6 +30,16 @@ export const UrlHandlerReducer = (state = initialUrl, action) => {
             return {
                 ...state,
                 imgWidth: action.payload
+            }
+        case URL_REQUEST_PENDING:
+            return {
+                ...state,
+                urlIsPending: true
+            }
+        case URL_REQUEST_SUCCESS:
+            return {
+                ...state,
+                urlIsPending: false
             }
         case RESET:
             return state = initialUrl;
