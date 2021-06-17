@@ -4,7 +4,8 @@ import {REQUEST_PENDING,
         INITIAL_IS_PENDING,
         RESET,
         LOGOUT_REQUEST_PENDING,
-        LOGOUT_REQUEST_SUCCESS
+        LOGOUT_REQUEST_SUCCESS,
+        FACE_DETECT_COUNT
     } from '../constants';
 
 const initialData={
@@ -53,6 +54,17 @@ export const formSubmitReducer = (state=initialData, action) => {
             return {
                 ...state,
                 logoutIsPending: false
+            }
+        case FACE_DETECT_COUNT:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    user: {
+                        ...state.data.user,
+                        faceDetect: action.payload
+                    }
+                }
             }
         case RESET:
             return state = initialData;

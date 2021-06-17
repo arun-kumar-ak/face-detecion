@@ -21,6 +21,7 @@ export const LOGOUT_REQUEST_SUCCESS = "LOGOUT_REQUEST_SUCCESS";
 
 //DIALOG BOX constants
 export const IS_DIALOG_OPEN = "IS_DIALOG_OPEN";
+export const FACE_DETECT_COUNT = "FACE_DETECT_COUNT";
 
 //URL Handler
 export const IMG_URL = "IMG_URL";
