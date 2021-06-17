@@ -23,6 +23,13 @@ const UserDialog = () => {
                     <List>
                         <ListItem className="list-item">
                             <ListItemText>
+                                <h3>Face Detects Yet</h3>
+                                <h2>{user.faceDetect}</h2>
+                                {/* Arun Kumar */}
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem className="list-item">
+                            <ListItemText>
                                 {user.username}
                                 {/* Arun Kumar */}
                             </ListItemText>
