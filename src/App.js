@@ -13,7 +13,7 @@ import Home from './components/Home/Home';
 const mapStateToProps = (state) => {
   return state;
 }
-// https://face-detection-api-fda.herokuapp.com/
+
 const mapDispatchToProps = (dispatch) => {
   return {
     authUser: dispatch(authUser('authUser'))

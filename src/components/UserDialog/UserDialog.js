@@ -18,7 +18,7 @@ const UserDialog = () => {
             <Dialog open={dialogData.open} onClose={() => dispatch({type: IS_DIALOG_OPEN, payload: !dialogData.open})} className="dialog">
                 <div className="inner-dialog">
                     <Avatar className="person-icon-avatar">
-                        <PersonIcon />
+                        {user.picture ? <img alt="user logo" src={user.picture} /> : <PersonIcon />}
                     </Avatar>
                     <List>
                         <ListItem className="list-item">
@@ -45,7 +45,7 @@ const UserDialog = () => {
             </Dialog>
             <IconButton className="dialog-icon-button" onClick={() => dispatch({type: IS_DIALOG_OPEN, payload: !dialogData.open})}>
                 <Avatar className="avatar">
-                    {user.username[0]}
+                    {user.picture ? <Avatar alt="user logo" src={user.picture} /> : user.username[0]}
                     {/* A */}
                 </Avatar>
             </IconButton>
