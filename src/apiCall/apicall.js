@@ -9,7 +9,7 @@ export const apiCallPost = (route,bodyData) => fetch(url+route,{
     credentials: 'include',
     body: JSON.stringify(bodyData)
 }).then(resp => {
-    return resp.json()
+    return resp.json();
 })
 
 export const apiCallGet = (route) => fetch(url+route, {
