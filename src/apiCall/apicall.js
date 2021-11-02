@@ -1,6 +1,6 @@
-var url = process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_SERVER_URL : process.env.REACT_APP_SERVER_URL
+// var url = process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_SERVER_URL : process.env.REACT_APP_SERVER_URL
 
-export const apiCallPost = (route,bodyData) => fetch(url+route,{
+export const apiCallPost = (route,bodyData) => fetch('/'+route,{
     method: 'post',
     headers: {
         'Content-Type': 'application/json'
@@ -12,7 +12,7 @@ export const apiCallPost = (route,bodyData) => fetch(url+route,{
     return resp.json();
 })
 
-export const apiCallGet = (route) => fetch(url+route, {
+export const apiCallGet = (route) => fetch('/'+route, {
     method: 'get',
     credentials: 'include',
     mode:'cors'
