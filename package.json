@@ -1,7 +1,7 @@
 {
   "name": "face-detection",
+  "proxy": "https://face-detection-api-fda.herokuapp.com/",
   "homepage": "https://arun-kumar-ak.github.io/face-detection/",
-  "proxy": "https://face-detection-api-fda.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
