@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/face-detection/static/css/main.aba6566d.chunk.css",
-    "main.js": "/face-detection/static/js/main.4fa42090.chunk.js",
-    "main.js.map": "/face-detection/static/js/main.4fa42090.chunk.js.map",
+    "main.css": "/face-detection/static/css/main.eb7cfa72.chunk.css",
+    "main.js": "/face-detection/static/js/main.0b2ff6b6.chunk.js",
+    "main.js.map": "/face-detection/static/js/main.0b2ff6b6.chunk.js.map",
     "runtime-main.js": "/face-detection/static/js/runtime-main.b986d7e5.js",
     "runtime-main.js.map": "/face-detection/static/js/runtime-main.b986d7e5.js.map",
     "static/js/2.3490432f.chunk.js": "/face-detection/static/js/2.3490432f.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.84d26af5.chunk.js": "/face-detection/static/js/3.84d26af5.chunk.js",
     "static/js/3.84d26af5.chunk.js.map": "/face-detection/static/js/3.84d26af5.chunk.js.map",
     "index.html": "/face-detection/index.html",
-    "static/css/main.aba6566d.chunk.css.map": "/face-detection/static/css/main.aba6566d.chunk.css.map",
+    "static/css/main.eb7cfa72.chunk.css.map": "/face-detection/static/css/main.eb7cfa72.chunk.css.map",
     "static/js/2.3490432f.chunk.js.LICENSE.txt": "/face-detection/static/js/2.3490432f.chunk.js.LICENSE.txt",
     "static/media/face-scan.628141a5.png": "/face-detection/static/media/face-scan.628141a5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b986d7e5.js",
     "static/js/2.3490432f.chunk.js",
-    "static/css/main.aba6566d.chunk.css",
-    "static/js/main.4fa42090.chunk.js"
+    "static/css/main.eb7cfa72.chunk.css",
+    "static/js/main.0b2ff6b6.chunk.js"
   ]
 }
