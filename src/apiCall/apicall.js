@@ -4,7 +4,7 @@ export const apiCallPost = (route,bodyData) => fetch(url+route,{
     method: 'post',
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://arun-kumar-ak.github.io',
+        // 'Access-Control-Allow-Origin': 'https://arun-kumar-ak.github.io',
     },
     mode:'cors',
     credentials: 'include',
