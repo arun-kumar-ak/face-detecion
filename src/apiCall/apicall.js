@@ -3,7 +3,8 @@ var url = process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_S
 export const apiCallPost = (route,bodyData) => fetch(url+route,{
     method: 'post',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://arun-kumar-ak.github.io',
     },
     mode:'cors',
     credentials: 'include',
